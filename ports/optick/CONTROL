@@ -1,0 +1,3 @@
+Source: optick
+Version: 1.2.9
+Description: Optick is a super-lightweight C++ profiler for Games. It provides access for all the necessary tools required for efficient performance analysis and optimization: instrumentation, switch-contexts, sampling, GPU counters.
