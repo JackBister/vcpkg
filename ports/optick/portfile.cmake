@@ -6,13 +6,22 @@ vcpkg_from_github(
     REF 1.2.9.0
     SHA512 9fb0b5c2207df6b61437ac6901ceaf768517438adf285b16c0035915d46eba720fa6052fda6e275318ee9b1782f7eea8ce3f7680603fda7ce2a001330a657a65
     HEAD_REF master
+    PATCHES
+        0001-vulkan-include-link.patch
 )
+
+vcpkg_check_features(
+    OUT_FEATURE_OPTIONS FEATURE_OPTIONS
+    vulkan OPTICK_USE_VULKAN
+)
+
+set(VULKAN_SDK $ENV{VULKAN_SDK})
 
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
     PREFER_NINJA
     OPTIONS
-        -DOPTICK_USE_VULKAN=${USE_VULKAN}
+        ${FEATURE_OPTIONS}
 )
 
 vcpkg_build_cmake(TARGET OptickCore)
